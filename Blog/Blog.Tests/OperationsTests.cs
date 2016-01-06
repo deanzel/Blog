@@ -23,13 +23,13 @@ namespace Blog.Tests
         private BlogOperations _ops = new BlogOperations();
         private Response _response = new Response();
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             TestSetupCs = ConfigurationManager.ConnectionStrings["Setup"].ConnectionString;
             using (SqlConnection cn = new SqlConnection(TestSetupCs))
             {
-                string scriptLoc = @"sql\dbsetup.sql";
+                string scriptLoc = @"C:\_repos\Blog\Blog\Blog.Tests\sql\dbsetup.sql";
 
                 string script = File.ReadAllText(scriptLoc);
 

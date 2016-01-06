@@ -24,14 +24,14 @@ namespace Blog.Tests
         private JavaScriptSerializer _jss;
 
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             _testSetupCs = ConfigurationManager.ConnectionStrings["Setup"].ConnectionString;
 
             using (SqlConnection cn = new SqlConnection(_testSetupCs))
             {
-                string scriptLoc = @"sql\dbsetup.sql";
+                string scriptLoc = @"C:\_repos\Blog\Blog\Blog.Tests\sql\dbsetup.sql";
 
                 string script = File.ReadAllText(scriptLoc);
 
@@ -41,7 +41,7 @@ namespace Blog.Tests
             }
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void Dispose()
         {
             //Nothing
